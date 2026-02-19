@@ -1,0 +1,10 @@
+version: v2
+modules:
+  - path: .
+    name: buf.build/huynhhoangphuc/mcs-erp
+lint:
+  use:
+    - STANDARD
+breaking:
+  use:
+    - FILE

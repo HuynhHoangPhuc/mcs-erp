@@ -1,0 +1,33 @@
+# Go
+/tmp/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node / Frontend
+node_modules/
+dist/
+.turbo/
+.next/
+
+# Generated
+/gen/
+*.pb.go
+
+# Docker
+docker-compose.override.yml
