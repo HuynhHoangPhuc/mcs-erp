@@ -2,7 +2,7 @@
 
 # Go hot-reload with air
 dev:
-	air
+	go tool air
 
 # Build binary
 build:
@@ -14,23 +14,23 @@ test:
 
 # Lint with golangci-lint
 lint:
-	golangci-lint run ./...
+	go tool golangci-lint run ./...
 
 # Run database migrations
 migrate:
-	@echo "TODO: implement with golang-migrate"
+	go tool goose -dir migrations postgres "$(DATABASE_URL)" up
 
 # Generate sqlc code
 sqlc:
-	sqlc generate
+	go tool sqlc generate
 
 # Generate protobuf/gRPC code
 proto:
-	buf generate
+	go tool buf generate
 
 # Generate OpenAPI/Swagger docs
 swagger:
-	swag init -g cmd/server/main.go -o docs/swagger
+	go tool swag init -g cmd/server/main.go -o docs/swagger
 
 # Remove build artifacts
 clean:

@@ -11,6 +11,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/joho/godotenv"
+
 	"github.com/HuynhHoangPhuc/mcs-erp/internal/agent"
 	agentdomain "github.com/HuynhHoangPhuc/mcs-erp/internal/agent/domain"
 	agentinfra "github.com/HuynhHoangPhuc/mcs-erp/internal/agent/infrastructure"
@@ -32,6 +34,9 @@ import (
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo}))
 	slog.SetDefault(logger)
+
+	// Load .env file if present (ignored in production where vars are injected)
+	_ = godotenv.Load()
 
 	// Load config
 	cfg, err := config.Load()
