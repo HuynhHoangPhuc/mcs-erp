@@ -36,8 +36,18 @@ func NewModule(
 	llmCfg domain.LLMConfig,
 	redisURL string,
 ) *Module {
+	return NewModuleWithProvider(pool, authSvc, registry, services.NewProviderService(llmCfg), redisURL)
+}
+
+// NewModuleWithProvider wires the agent module with an explicit provider service.
+func NewModuleWithProvider(
+	pool *pgxpool.Pool,
+	authSvc *coreservices.AuthService,
+	registry *infrastructure.ToolRegistry,
+	providerSvc *services.ProviderService,
+	redisURL string,
+) *Module {
 	convRepo := infrastructure.NewPostgresConversationRepo(pool)
-	providerSvc := services.NewProviderService(llmCfg)
 
 	var cache *infrastructure.RedisMessageCache
 	if redisURL != "" {
@@ -62,8 +72,8 @@ func NewModule(
 // ToolRegistry exposes the registry so other modules can register tools during bootstrap.
 func (m *Module) ToolRegistry() *infrastructure.ToolRegistry { return m.registry }
 
-func (m *Module) Name() string           { return "agent" }
-func (m *Module) Dependencies() []string { return []string{"core"} }
+func (m *Module) Name() string                           { return "agent" }
+func (m *Module) Dependencies() []string                 { return []string{"core"} }
 func (m *Module) Migrate(_ context.Context) error        { return nil }
 func (m *Module) RegisterEvents(_ context.Context) error { return nil }
 

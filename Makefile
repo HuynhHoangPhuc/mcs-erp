@@ -1,4 +1,4 @@
-.PHONY: dev build test lint migrate sqlc proto swagger clean
+.PHONY: dev build test test-integration lint migrate sqlc proto swagger clean
 
 # Go hot-reload with air
 dev:
@@ -11,6 +11,10 @@ build:
 # Run all Go tests
 test:
 	go test ./... -v -race
+
+# Run integration tests (requires docker compose postgres/redis)
+test-integration:
+	go test -tags integration ./... -v -race
 
 # Lint with golangci-lint
 lint:

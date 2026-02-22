@@ -28,6 +28,7 @@ dist/
 # Generated
 /gen/
 *.pb.go
+/repomix-output.xml
 
 # Docker
 docker-compose.override.yml

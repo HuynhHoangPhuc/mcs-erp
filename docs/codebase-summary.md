@@ -6,6 +6,16 @@ Multi-tenant, agentic-first ERP system built with Go (backend), React (frontend)
 **Module path:** github.com/HuynhHoangPhuc/mcs-erp
 **Go version:** 1.22+
 
+## Repository Snapshot (Feb 2026)
+
+Compiled via `repomix` v1.11.1 (`repomix-output.xml`) to track the current code surface:
+
+- 238 files, 224,121 tokens, 860K characters captured in the compaction for quick navigation.
+- Top token contributors: `go.mod`, `docs/code-standards.md`, `plans/reports/researcher-260219-1151-odoo-architecture.md`, `docs/system-architecture.md`, `docs/project-overview-pdr.md`.
+- Security analyzer excluded `internal/testutil/testutil.go`, `plans/260221-2137-integration-testing/phase-01-test-infrastructure-setup.md`, and `.env.example` because they contained flagged content; review those if needed.
+
+**Notes:** Keep docs/code references aligned with this snapshot to avoid drift.
+
 ## Project Structure
 
 ```

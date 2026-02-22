@@ -58,7 +58,7 @@ Start here for system design:
 - ✅ 6 modules fully implemented
 - ✅ 60+ REST API endpoints
 - ⚠️ Frontend module UIs are scaffolds (need implementation)
-- ⚠️ Comprehensive tests needed (target 80% coverage)
+- ⚠️ Comprehensive tests still needed (target 80% coverage); integration + security suites now guard key workflows
 
 ### Immediate Next Steps (Week 1-2)
 1. Backend testing & hardening (2 days)
@@ -73,8 +73,9 @@ Start here for system design:
 ### Setting Up Development Environment
 1. Read [codebase-summary.md](./codebase-summary.md) → "Development" section
 2. Follow quick start: `docker compose up -d && make dev`
-3. Run tests: `make test`
-4. Run linter: `make lint`
+3. Run unit tests: `make test`
+4. Run integration tests (requires Docker Compose): `make test-integration`
+5. Run linter: `make lint`
 
 ### Adding a New Feature
 1. Review module structure in [system-architecture.md](./system-architecture.md)
