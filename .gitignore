@@ -24,6 +24,10 @@ node_modules/
 dist/
 .turbo/
 .next/
+*.tsbuildinfo
+
+# Local binaries
+/server
 
 # Generated
 /gen/

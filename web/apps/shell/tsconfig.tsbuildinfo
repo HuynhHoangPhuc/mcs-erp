@@ -1,1 +1,0 @@
-{"root":["./src/main.tsx","./src/router.ts","./src/hooks/use-auth.ts","./src/lib/api-client.ts","./src/providers/auth-provider.tsx","./src/routes/__root.tsx","./src/routes/_authenticated.tsx","./src/routes/login.tsx","./src/routes/_authenticated/index.tsx"],"version":"5.9.3"}
