@@ -340,31 +340,57 @@ for _, mod := range modules {
 ### Monorepo Layout (Turborepo + pnpm)
 ```
 web/
-├── apps/shell/              # Main React 19 app (routes, providers)
-│   └── src/
-│       ├── routes/          # Page components
-│       ├── providers/       # Context providers (auth, theme)
-│       ├── hooks/           # Custom React hooks
-│       └── lib/             # Utilities
-├── packages/ui/             # Shared shadcn/ui components
-├── packages/api-client/     # OpenAPI-generated types + TanStack Query hooks
-├── packages/module-hr/      # HR feature module
-├── packages/module-subject/ # Subject feature module
-├── packages/module-room/    # Room feature module
-├── packages/module-timetable/ # Timetable feature module
-└── packages/module-agent/   # Agent feature module
+├── apps/
+│   └── shell/               # Main React 19 SPA (Vite, routes, providers)
+│       ├── src/
+│       │   ├── routes/      # TanStack Router file-based pages
+│       │   ├── providers/   # Auth, Query, Theme context
+│       │   ├── hooks/       # useAuth, useQuery patterns
+│       │   └── lib/         # API client, constants, utilities
+│       ├── vite.config.ts   # Vite bundler config
+│       ├── tsconfig.json    # TypeScript config
+│       └── package.json
+├── packages/
+│   ├── ui/                  # shadcn/ui component library (buttons, forms, tables, etc.)
+│   ├── api-client/          # API types + TanStack Query hooks
+│   │   ├── src/
+│   │   │   ├── queries.ts   # useListTeachers, useCreateTeacher, etc.
+│   │   │   ├── mutations.ts # useMutateTeacher, etc.
+│   │   │   └── types.ts     # TypeScript API types (Teacher, Subject, etc.)
+│   │   └── package.json
+│   ├── module-hr/           # HR pages (teachers, departments, availability)
+│   ├── module-subject/      # Subject pages (CRUD, prerequisites, DAG visualizer)
+│   ├── module-room/         # Room pages (CRUD, availability grid)
+│   ├── module-timetable/    # Timetable pages (semester wizard, schedule grid, SSE progress)
+│   └── module-agent/        # Agent pages (chat interface, conversations)
+├── pnpm-workspace.yaml      # pnpm monorepo config
+├── turbo.json               # Turborepo task config (dev, build, lint)
+└── package.json
 ```
 
 ### Tech Stack
-- **React 19** with TypeScript
-- **TanStack Router** — File-based routing
-- **TanStack Query (React Query)** — Server state management + API integration
-- **TanStack Table** — Advanced data tables
-- **TanStack Form** — Form state management
-- **shadcn/ui** — Headless UI component library
-- **Tailwind CSS** — Utility-first styling
-- **Turborepo** — Monorepo task orchestration
-- **pnpm** — Package manager
+- **React 19** — Latest with concurrent rendering, automatic batching
+- **TypeScript** — Type-safe frontend code
+- **TanStack Router** — File-based routing with auth guards, nested layouts
+- **TanStack Query** — Server state, caching, auto-refresh, optimistic updates
+- **TanStack Table** — Advanced table features (sorting, filtering, pagination)
+- **TanStack Form** — Form validation, dirty tracking, multi-step forms
+- **shadcn/ui** — Headless component library (built on Radix UI + Tailwind)
+- **Tailwind CSS v4** — Utility-first styling, responsive design
+- **Vite** — Lightning-fast dev server + build tool
+- **Turborepo** — Monorepo orchestration (dev, build, lint parallelization)
+- **pnpm** — Fast, space-efficient package manager
+
+### Frontend Features
+- **JWT Authentication** — Login with auto-refresh, protected routes, logout
+- **Multi-module UI** — Separate packages per backend module (hr, subject, room, timetable, agent)
+- **Data Tables** — HR/Subject/Room tables with CRUD, search, sort, filter, pagination
+- **Form Handling** — Create/edit forms with validation, error display
+- **Real-time Updates** — SSE streaming for long-running operations (timetable generation)
+- **Grid Editors** — Availability and schedule grids (drag, edit, validation)
+- **Responsive Design** — Mobile, tablet, desktop breakpoints with collapsible sidebar
+- **Error Handling** — Network, validation, auth, and permission errors with user feedback
+- **Optimistic Updates** — UI updates immediately before server confirmation
 
 ## Key Implementation Patterns
 

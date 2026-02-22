@@ -10,12 +10,21 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@hookform/resolvers": "^5.2.2",
+    "@mcs-erp/api-client": "workspace:^",
+    "@mcs-erp/ui": "workspace:^",
+    "@tanstack/react-query": "^5.62.0",
+    "@tanstack/react-router": "^1.95.0",
+    "@tanstack/react-table": "^8.21.3",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.71.2",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3"
   }
 }

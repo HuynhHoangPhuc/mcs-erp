@@ -1,2 +1,2 @@
-// @mcs-erp/module-agent - AI Agent module frontend
-export {};
+// @mcs-erp/module-agent — Agent module page components
+export { ChatPage } from "./components/chat-page";

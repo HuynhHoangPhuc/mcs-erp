@@ -2,6 +2,7 @@ import { createRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { rootRoute } from "./__root";
 import { useAuth } from "../hooks/use-auth";
+import { Button, Input, Label, Card, CardContent, CardHeader, CardTitle, CardDescription } from "@mcs-erp/ui";
 
 export const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -33,36 +34,44 @@ function LoginPage() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "4rem auto", padding: "2rem" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "1rem" }}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
-          />
-        </div>
-        <div style={{ marginBottom: "1rem" }}>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ display: "block", width: "100%", padding: "0.5rem" }}
-          />
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit" disabled={loading} style={{ padding: "0.5rem 1.5rem" }}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <Card className="w-full max-w-sm">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl">MCS-ERP</CardTitle>
+          <CardDescription>Sign in to your account</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="admin@example.com"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            {error && (
+              <p className="text-sm text-destructive">{error}</p>
+            )}
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Signing in..." : "Sign in"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }

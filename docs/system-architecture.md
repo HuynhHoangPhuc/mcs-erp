@@ -388,6 +388,18 @@ Shared infrastructure used by all modules:
 6. Return HTTP 201 with schedule ID & assignments (JSON array)
 ```
 
+## Frontend Architecture
+
+See [`frontend-architecture.md`](./frontend-architecture.md) for comprehensive frontend documentation including React 19 SPA structure, TanStack integration (Router/Query/Table/Form), module-specific packages, state management, and authentication flows.
+
+**Quick Summary:**
+- Location: `/web` (Turborepo monorepo)
+- Main app: `apps/shell` (Vite SPA with protected routes)
+- Packages: `ui` (components), `api-client` (hooks), `module-{hr,subject,room,timetable,agent}`
+- Tech: React 19, TypeScript, TanStack (Router/Query/Table/Form), shadcn/ui, Tailwind v4
+
+---
+
 ## DDD Layers (per module)
 
 Each module follows this structure:
